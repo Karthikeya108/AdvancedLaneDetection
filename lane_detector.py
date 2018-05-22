@@ -1,3 +1,8 @@
+'''
+For the Udacity Self-Driving Car Nanodegree - Term 1 - Project 4
+Note: Most part of the code has been resued from the lectures and quiz of the above mentioned online course from Udacity.
+'''
+
 import numpy as np
 import cv2
 from PIL import Image
