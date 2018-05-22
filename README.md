@@ -12,6 +12,8 @@ The goals / steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
+NOTE: One can use the `RunOnVideos.ipynb` notebook to run the lane detection code on video inputs.
+
 ### Camera Calibration
 
 The code for this step is contained in the method `calibrate_camera` (lines 31 to 56) in the file `lane_detector.py`.
