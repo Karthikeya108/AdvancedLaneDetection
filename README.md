@@ -35,7 +35,9 @@ I read the image into an array, and apply the `cv2.undistort()` function with `d
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 58 through 85 in `lane_detector.py`).  Here's an example of my output for this step. 
+I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 58 through 85 in `lane_detector.py`).  At first, I transformed the images to gray space and applied Sobel operator and took the derivative along the x axis and applied thresholding. Then I transformed the images to HLS color space and picked the S channel and applied thresholding. Finally I combined the results of both these methods to obtain the final binary image.
+
+Here's an example of my output for this step. 
 
 <img src="./output_images/thresholding_pipeline_result.jpg" height="400" width="1200">
 
@@ -70,17 +72,25 @@ Then I resorted to the `sliding window` technique which was explained in the lec
 
 <img src="./output_images/detect_lane_pixels_sw.jpg" height="600" width="1200">
 
-
+The code for this technique can be found in the method `detect_lane_pixels_sw()` in file `lane_detector.py` (lines 106 through 196) 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this in lines 240 through 251 in my code in `lane_detector.py`. I computed the left and right lane line curvature separetly using the `np.polyfit()` function and with x and y values converted from pixel space to real world space (meters). I calculated the position of the car as a difference between the center of the image (vehicle center) and the midpoint of the lane (lane center).
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+I implemented this step in lines 274 through 294 in my code in `lane_detector.py` in the function `draw_lane_path()`.  Here is an example of my result on a test image:
 
-![alt text][image6]
+<img src="./output_images/detected_lane.jpg" height="400" width="1000">
+
+Visualization of end to end pipeline of the above describe steps can be visualized as follows:
+
+<img src="./output_images/end-to-end-result.jpg" height="600" width="1200">
+
+Finally an example of the image with text annotations:
+
+<img src="./output_images/detected_lane_5.jpg" height="400" width="1000">
 
 ---
 
@@ -88,7 +98,7 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./output_videos/project_video_output.mp4)
 
 ---
 
